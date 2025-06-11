@@ -18,7 +18,7 @@ st.write(
 name_on_order = st.text_input("Name on smoothie:")
 st.write("Thanks: ", name_on_order)
 
-my_dataframe = session.table("smoothies.public.fruit_options").select(col('fruit_name'), col('search_on')
+my_dataframe = session.table("smoothies.public.fruit_options").select(col('fruit_name'), col('search_on'))
 st.dataframe(data=my_dataframe, use_container_width=True)
 st.stop()
 
