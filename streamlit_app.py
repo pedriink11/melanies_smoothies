@@ -18,8 +18,9 @@ st.write(
 name_on_order = st.text_input("Name on smoothie:")
 st.write("Thanks: ", name_on_order)
 
-my_dataframe = session.table("smoothies.public.fruit_options").select(col('fruit_name'))
-# st.dataframe(data=my_dataframe, use_container_width=True)
+my_dataframe = session.table("smoothies.public.fruit_options").select(col('fruit_name'), col('search_on')
+st.dataframe(data=my_dataframe, use_container_width=True)
+st.stop()
 
 ingredients_list = st.multiselect(
     "Choose up to 5 ingredients:",
@@ -33,7 +34,7 @@ if ingredients_list:
 
     for each_fruit in ingredients_list:
         ingredients_string += each_fruit + ' '
-        st.subheader(each_fruit + 'Nutrition Information')
+        st.subheader(each_fruit + ' Nutrition Information')
         smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" + each_fruit)
         st.text(smoothiefroot_response.json())
         df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
